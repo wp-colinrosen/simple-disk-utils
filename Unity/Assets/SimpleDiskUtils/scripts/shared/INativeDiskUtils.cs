@@ -22,5 +22,11 @@
 		/// <returns>The busy space in MB.</returns>
 		/// <param name="drive">Disk name. For example, "C:/"</param>
 		int CheckBusySpace(string drive = null);
+
+		/// <summary>
+		/// Gets the list of available drives
+		/// </summary>
+		/// <returns>The list of available drives</returns>
+		string[] GetDrives();
 	}
 }

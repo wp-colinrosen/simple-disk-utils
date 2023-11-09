@@ -54,6 +54,12 @@ namespace SimpleDiskUtils
 			return instance.CheckBusySpace(drive);
 		}
 
+		public static string[] GetDrives()
+		{
+			var instance = GetInstance();
+			return instance.GetDrives();
+		}
+
 
 		private static INativeDiskUtils GetInstance()
 		{
