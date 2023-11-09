@@ -3,11 +3,12 @@ using System.Collections;
 using System.IO;
 using SimpleDiskUtils;
 using SimpleDiskUtils.Sample;
+using UnityEngine.UI;
 
 public class TestDiskUtils : MonoBehaviour
 {
 	[SerializeField]
-	private TextMesh text;
+	private Text text;
 
 	private string obj = "A";
 
