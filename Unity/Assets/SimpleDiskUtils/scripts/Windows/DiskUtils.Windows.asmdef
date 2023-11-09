@@ -1,0 +1,20 @@
+{
+    "name": "DiskUtils.Windows",
+    "rootNamespace": "",
+    "references": [
+        "GUID:637d3b91efd685d4c9a1d494333238c1"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

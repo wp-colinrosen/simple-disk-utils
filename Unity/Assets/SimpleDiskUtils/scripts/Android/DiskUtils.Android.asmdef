@@ -1,0 +1,19 @@
+{
+    "name": "DiskUtils.Android",
+    "rootNamespace": "",
+    "references": [
+        "GUID:637d3b91efd685d4c9a1d494333238c1"
+    ],
+    "includePlatforms": [
+        "Android",
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

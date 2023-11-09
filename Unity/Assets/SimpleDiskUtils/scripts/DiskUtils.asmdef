@@ -1,0 +1,20 @@
+{
+    "name": "DiskUtils",
+    "rootNamespace": "",
+    "references": [
+        "GUID:637d3b91efd685d4c9a1d494333238c1",
+        "GUID:5f8cfe460e292714b89e39d0b288678a",
+        "GUID:bad427db9efd6ed49a92d7107c496d09",
+        "GUID:be9c40f114c61cb41bf976b2b964051d",
+        "GUID:d1bc2b916c5f0534dbb153567f17b4bb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
