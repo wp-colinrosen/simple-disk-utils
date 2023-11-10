@@ -1,29 +1,33 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace SimpleDiskUtils
 {
 	public class DiskUtilsAndroid : INativeDiskUtils
 	{
-		public int CheckAvailableSpace(string drive = null)
+		public Task<int> CheckAvailableSpace(string drive = null)
 		{
 			using var androidClass = new AndroidJavaClass("com.dikra.diskutils.DiskUtils");
 			var isExternalStorage = string.Equals(drive, "external", StringComparison.InvariantCultureIgnoreCase);
-			return androidClass.CallStatic<int>("availableSpace", isExternalStorage);
+			var result = androidClass.CallStatic<int>("availableSpace", isExternalStorage);
+			return Task.FromResult(result);
 		}
 
-		public int CheckTotalSpace(string drive = null)
+		public Task<int> CheckTotalSpace(string drive = null)
 		{
 			using var androidClass = new AndroidJavaClass("com.dikra.diskutils.DiskUtils");
 			var isExternalStorage = string.Equals(drive, "external", StringComparison.InvariantCultureIgnoreCase);
-			return androidClass.CallStatic<int>("totalSpace", isExternalStorage);
+			var result = androidClass.CallStatic<int>("totalSpace", isExternalStorage);
+			return Task.FromResult(result);
 		}
 
-		public int CheckBusySpace(string drive = null)
+		public Task<int> CheckBusySpace(string drive = null)
 		{
 			using var androidClass = new AndroidJavaClass("com.dikra.diskutils.DiskUtils");
 			var isExternalStorage = string.Equals(drive, "external", StringComparison.InvariantCultureIgnoreCase);
-			return androidClass.CallStatic<int>("busySpace", isExternalStorage);
+			var result = androidClass.CallStatic<int>("busySpace", isExternalStorage);
+			return Task.FromResult(result);
 		}
 		
 		public string[] GetDrives()

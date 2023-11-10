@@ -1,6 +1,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SimpleDiskUtils
 {
@@ -9,22 +10,25 @@ namespace SimpleDiskUtils
 		private const string DEFAULT_DRIVE = "C:/";
 
 
-		public int CheckAvailableSpace(string drive = null)
+		public Task<int> CheckAvailableSpace(string drive = null)
 		{
 			drive ??= DEFAULT_DRIVE;
-			return getAvailableDiskSpace(new StringBuilder(drive));
+			var result = getAvailableDiskSpace(new StringBuilder(drive));
+			return Task.FromResult(result);
 		}
 
-		public int CheckTotalSpace(string drive = null)
+		public Task<int> CheckTotalSpace(string drive = null)
 		{
 			drive ??= DEFAULT_DRIVE;
-			return getTotalDiskSpace(new StringBuilder(drive));
+			var result = getTotalDiskSpace(new StringBuilder(drive));
+			return Task.FromResult(result);
 		}
 
-		public int CheckBusySpace(string drive = null)
+		public Task<int> CheckBusySpace(string drive = null)
 		{
 			drive ??= DEFAULT_DRIVE;
-			return getBusyDiskSpace(new StringBuilder(drive));
+			var result = getBusyDiskSpace(new StringBuilder(drive));
+			return Task.FromResult(result);
 		}
 
 		public string[] GetDrives()

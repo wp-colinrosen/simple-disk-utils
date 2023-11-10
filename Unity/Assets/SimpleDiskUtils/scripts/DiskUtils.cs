@@ -31,24 +31,25 @@ Copyright (c) 2016  M Dikra Prasetya
 */
 
 using System;
+using System.Threading.Tasks;
 
 namespace SimpleDiskUtils
 {
 	public class DiskUtils
 	{
-		public static int CheckAvailableSpace(string drive = null)
+		public static Task<int> CheckAvailableSpace(string drive = null)
 		{
 			var instance = GetInstance();
 			return instance.CheckAvailableSpace(drive);
 		}
 
-		public static int CheckTotalSpace(string drive = null)
+		public static Task<int> CheckTotalSpace(string drive = null)
 		{
 			var instance = GetInstance();
 			return instance.CheckTotalSpace(drive);
 		}
 
-		public static int CheckBusySpace(string drive = null)
+		public static Task<int> CheckBusySpace(string drive = null)
 		{
 			var instance = GetInstance();
 			return instance.CheckBusySpace(drive);
@@ -71,6 +72,8 @@ namespace SimpleDiskUtils
 			return new DiskUtilsOSX();
 #elif UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
 			return new DiskUtilsWindows();
+#elif UNITY_WEBGL && !UNITY_EDITOR
+			return new DiskUtilsWebGL();
 #else
 			#error Unsupported platform
 #endif

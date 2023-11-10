@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Threading.Tasks;
 using SimpleDiskUtils;
 using SimpleDiskUtils.Sample;
 using UnityEngine.UI;
@@ -24,11 +25,11 @@ public class TestDiskUtils : MonoBehaviour
 		if (obj.Length < 3000000)
 			return;
 
-		StartCoroutine(Tests());
+		Tests();
 	}
 
 
-	private IEnumerator Tests()
+	private async void Tests()
 	{
 		text.text = "";
 
@@ -36,22 +37,18 @@ public class TestDiskUtils : MonoBehaviour
 		var storePath = Application.persistentDataPath + "/TestDiskUtils/Test.txt";
 
 
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
 		foreach (var drive in Directory.GetLogicalDrives())
 		{
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
 			if (drive != "C:/")
 			{
 				dir = drive + "TestDiskUtils/";
 				storePath = drive + "TestDiskUtils/Test.txt";
 			}
+#endif
 
 			PrintDebugLn();
 			PrintDebugLn(">>> NOW TESTING ON DRIVE " + drive + " <<<");
-#elif UNITY_ANDROID
-			var drive = "external";
-#else
-			var drive = string.Empty;
-#endif
 
 			if (!Directory.Exists(dir))
 				Directory.CreateDirectory(dir);
@@ -59,8 +56,7 @@ public class TestDiskUtils : MonoBehaviour
 			if (File.Exists(storePath))
 				File.Delete(storePath);
 
-
-			PrintStorageStats(drive);
+			await PrintStorageStats(drive);
 
 			if (!Directory.Exists(dir))
 				Directory.CreateDirectory(dir);
@@ -69,7 +65,7 @@ public class TestDiskUtils : MonoBehaviour
 
 			PrintDebugLn("===== FILE ADDED!!! (Test File is around 3-4 MB) =====");
 
-			PrintStorageStats(drive);
+			await PrintStorageStats(drive);
 
 			if (File.Exists(storePath))
 			{
@@ -81,13 +77,8 @@ public class TestDiskUtils : MonoBehaviour
 				PrintDebugLn("===== File not found: most likely also failed on create =====");
 			}
 
-			PrintStorageStats(drive);
-
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+			await PrintStorageStats(drive);
 		}
-#endif
-
-		yield return null;
 	}
 
 
@@ -103,10 +94,14 @@ public class TestDiskUtils : MonoBehaviour
 		PrintDebug($"{str}\n");
 	}
 
-	private void PrintStorageStats(string drive)
+	private async Task PrintStorageStats(string drive)
 	{
-		PrintDebugLn("=========== AVAILABLE SPACE  : " + DiskUtils.CheckAvailableSpace(drive) + " MB ===========");
-		PrintDebugLn("=========== BUSY SPACE  : " + DiskUtils.CheckBusySpace(drive) + " MB ===========");
-		PrintDebugLn("=========== TOTAL SPACE : " + DiskUtils.CheckTotalSpace(drive) + " MB ===========");
+		var available = await DiskUtils.CheckAvailableSpace(drive);
+		var busy = await DiskUtils.CheckBusySpace(drive);
+		var total = await DiskUtils.CheckTotalSpace(drive);
+
+		PrintDebugLn("=========== AVAILABLE SPACE  : " + available + " MB ===========");
+		PrintDebugLn("=========== BUSY SPACE  : " + busy + " MB ===========");
+		PrintDebugLn("=========== TOTAL SPACE : " + total + " MB ===========");
 	}
 }

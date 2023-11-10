@@ -1,26 +1,30 @@
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace SimpleDiskUtils
 {
 	public class DiskUtilsIOS : INativeDiskUtils
 	{
-		public int CheckAvailableSpace(string drive = null)
+		public Task<int> CheckAvailableSpace(string drive = null)
 		{
 			var ret = getAvailableDiskSpace();
-			return int.Parse(ret.ToString());
+			var result = int.Parse(ret.ToString());
+			return Task.FromResult(result);
 		}
 
-		public int CheckTotalSpace(string drive = null)
+		public Task<int> CheckTotalSpace(string drive = null)
 		{
 			var ret = getTotalDiskSpace();
-			return int.Parse(ret.ToString());
+			var result = int.Parse(ret.ToString());
+			return Task.FromResult(result);
 		}
 
-		public int CheckBusySpace(string drive = null)
+		public Task<int> CheckBusySpace(string drive = null)
 		{
 			var ret = getBusyDiskSpace();
-			return int.Parse(ret.ToString());
+			var result = int.Parse(ret.ToString());
+			return Task.FromResult(result);
 		}
 		
 		public string[] GetDrives()

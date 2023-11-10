@@ -1,0 +1,19 @@
+﻿{
+  "name": "DiskUtils.WebGL",
+  "rootNamespace": "",
+  "references": [
+    "GUID:637d3b91efd685d4c9a1d494333238c1"
+  ],
+  "includePlatforms": [
+    "Editor",
+    "WebGL"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
