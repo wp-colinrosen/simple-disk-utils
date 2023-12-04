@@ -15,6 +15,7 @@
 		8D8E8D7E1D0AACFB0036F755 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D8E8D841D0AAD160036F755 /* diskutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = diskutils.cpp; sourceTree = "<group>"; };
 		8D8E8D851D0AAD160036F755 /* diskutils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = diskutils.hpp; sourceTree = "<group>"; };
+		961AE0D12B1DE6DE001ED4CF /* diskutils copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "diskutils copy-Info.plist"; path = "/Users/office/Desktop/diskutils/diskutils copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +36,7 @@
 				8D8E8D851D0AAD160036F755 /* diskutils.hpp */,
 				8D8E8D7D1D0AACFB0036F755 /* diskutils */,
 				8D8E8D7C1D0AACFB0036F755 /* Products */,
+				961AE0D12B1DE6DE001ED4CF /* diskutils copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +95,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 8D8E8D721D0AACFB0036F755;
@@ -211,9 +214,12 @@
 		8D8E8D821D0AACFB0036F755 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = diskutils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dikra.diskutils;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -224,7 +230,9 @@
 		8D8E8D831D0AACFB0036F755 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = diskutils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dikra.diskutils;
@@ -253,6 +261,7 @@
 				8D8E8D831D0AACFB0036F755 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
